@@ -1,20 +1,23 @@
+import { ThemeType } from "@/_types/ThemeType";
 import { create } from "zustand";
 
 interface ThemeStore {
-  theme: "dark" | "light" | ""; // 빈 문자열도 초기값으로 설정 가능
-  setTheme: () => void;
-  initializeTheme: (initialTheme: "dark" | "light") => void; // 초기화 함수
+  theme: ThemeType;
+  setTheme: (newTheme: ThemeType) => void;
+  toggleTheme: () => void;
 }
 
+/**
+ * @desc 테마 전역 상태
+ * @desc setTheme 특정 theme를 적용하기 위함
+ * @desc toggle 호출로 토글
+ */
 const useThemeStore = create<ThemeStore>((set) => ({
-  theme: "", // 기본값을 빈 문자열로 설정해, 나중에 초기화 가능
-  setTheme: () =>
+  theme: "",
+  setTheme: (newTheme: ThemeType) => set({ theme: newTheme }),
+  toggleTheme: () =>
     set((state) => ({
-      theme: state.theme === "light" ? "dark" : "light",
-    })),
-  initializeTheme: (initialTheme) =>
-    set(() => ({
-      theme: initialTheme,
+      theme: state.theme === "dark" ? "light" : "dark",
     })),
 }));
 

@@ -1,29 +1,29 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import useThemeStore from "../../store/themeStore";
+import useThemeStore from "@/_module/store/themeStore";
+import { ThemeType } from "@/_types/ThemeType";
 
 export default function ThemeDetector({
   defaultTheme,
   children,
 }: {
-  defaultTheme?: string;
+  defaultTheme?: ThemeType;
   children: React.ReactNode;
 }) {
-  const { theme, initializeTheme } = useThemeStore();
+  const { theme, setTheme } = useThemeStore();
+  const [themeStatus, setThemeStatus] = useState(defaultTheme ?? "");
 
-  const [themeStatus, setThemeStatus] = useState(defaultTheme);
-
-  console.log("defaultTheme", defaultTheme);
-  console.log("theme", theme);
-  console.log("themeStatus", themeStatus);
-
+  // 초기값이 비어있지 않을경우 theme를 적용
   useEffect(() => {
-    if (defaultTheme) initializeTheme(defaultTheme as "light" | "dark");
-  }, [initializeTheme]);
+    if (themeStatus !== "") setTheme(themeStatus);
+  }, []);
 
+  //
   useEffect(() => {
-    setThemeStatus(theme);
+    if (theme) {
+      setThemeStatus(theme);
+    }
   }, [theme]);
 
   return <div className={themeStatus}>{children}</div>;

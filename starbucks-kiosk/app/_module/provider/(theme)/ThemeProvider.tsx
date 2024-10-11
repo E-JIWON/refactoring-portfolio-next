@@ -1,10 +1,11 @@
 import React from "react";
 import { cookies } from "next/headers";
+import { ThemeType } from "@/_types/ThemeType";
 import ThemeDetector from "./ThemeDetector";
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const cokies = cookies();
-  const themeCookie = cokies.get("theme")?.value;
+  const serverCookie = cookies();
+  const themeCookie = (serverCookie.get("theme")?.value ?? "") as ThemeType;
 
   return <ThemeDetector defaultTheme={themeCookie}>{children}</ThemeDetector>;
 };
