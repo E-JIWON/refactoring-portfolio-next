@@ -2,6 +2,8 @@
 #env
 .env.local
 
+#기존 프로젝트
+.기존-프로젝트
 
 # dependencies
 /node_modules
