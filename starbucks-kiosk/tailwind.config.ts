@@ -19,7 +19,12 @@ const config: Config = {
                },
             },
             dark: {
-               bg: '#128390',
+               white: {
+                  500: '#dbd6c1',
+               },
+               green: {
+                  500: '#001e1e',
+               },
             },
          },
       },

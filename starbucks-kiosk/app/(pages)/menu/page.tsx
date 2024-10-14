@@ -1,7 +1,13 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
+import { addMultipleDocuments } from '@/_lib/firebaseConfig';
 
 /** @desc 메뉴 리스트 페이지 */
 const MenuListPage = () => {
+   // DB 한번에 저장하는거임 !
+   // useEffect(() => {
+   //    addMultipleDocuments();
+   // }, []);
    return (
       <section>
          {/* 메뉴 리스트 */}
