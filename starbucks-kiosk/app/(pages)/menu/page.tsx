@@ -1,6 +1,7 @@
 'use client';
-import React, { useEffect } from 'react';
-import { addMultipleDocuments } from '@/_lib/firebaseConfig';
+import React, { useEffect, useState } from 'react';
+
+// import { addMultipleDocuments } from '@/_lib/firebaseConfig';
 
 /** @desc 메뉴 리스트 페이지 */
 const MenuListPage = () => {
@@ -8,6 +9,27 @@ const MenuListPage = () => {
    // useEffect(() => {
    //    addMultipleDocuments();
    // }, []);
+
+   const [data, setData] = useState<any[]>([]);
+
+   useEffect(() => {
+      console.log('jiwon ;;');
+      const fetchData = async () => {
+         const response = await fetch('/menu/api');
+         // const result = await response;
+         // setData(result.data);
+
+         console.log('jiwon response ??', response);
+         // console.log('jiwon result', result);
+      };
+
+      fetchData();
+   }, []);
+
+   useEffect(() => {
+      console.log('jiwon ', data);
+   }, [data]);
+
    return (
       <section>
          {/* 메뉴 리스트 */}

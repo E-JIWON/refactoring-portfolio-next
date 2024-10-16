@@ -26,7 +26,7 @@ export default function RootLayout({
       <html lang="ko">
          <body className={`${gowunBatangFont.className} antialiased`}>
             <ThemeProvider>
-               <div className="max-w-[700px] w-full h-screen mx-auto bg-light-green-500 text-light-white-500">
+               <div className="w-[700px] h-[900px] mx-auto bg-light-green-500 text-light-white-500">
                   {children}
                </div>
             </ThemeProvider>
