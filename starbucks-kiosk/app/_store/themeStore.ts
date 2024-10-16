@@ -1,10 +1,10 @@
-import { ThemeType } from "@/_types/ThemeType";
-import { create } from "zustand";
+import { ThemeType } from '@/_types/themeType';
+import { create } from 'zustand';
 
 interface ThemeStore {
-  theme: ThemeType;
-  setTheme: (newTheme: ThemeType) => void;
-  toggleTheme: () => void;
+   theme: ThemeType;
+   setTheme: (newTheme: ThemeType) => void;
+   toggleTheme: () => void;
 }
 
 /**
@@ -13,12 +13,12 @@ interface ThemeStore {
  * @desc toggle 호출로 토글
  */
 const useThemeStore = create<ThemeStore>((set) => ({
-  theme: "",
-  setTheme: (newTheme: ThemeType) => set({ theme: newTheme }),
-  toggleTheme: () =>
-    set((state) => ({
-      theme: state.theme === "dark" ? "light" : "dark",
-    })),
+   theme: '',
+   setTheme: (newTheme: ThemeType) => set({ theme: newTheme }),
+   toggleTheme: () =>
+      set((state) => ({
+         theme: state.theme === 'dark' ? 'light' : 'dark',
+      })),
 }));
 
 export default useThemeStore;

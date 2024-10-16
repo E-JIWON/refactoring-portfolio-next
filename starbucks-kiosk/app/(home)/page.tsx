@@ -1,5 +1,5 @@
 import React from 'react';
-import ThemeButton from '../_module/components/button/ThemeButton';
+import ThemeButton from '@/_ui/components/button/ThemeButton';
 import Link from 'next/link';
 
 export default function Home() {
