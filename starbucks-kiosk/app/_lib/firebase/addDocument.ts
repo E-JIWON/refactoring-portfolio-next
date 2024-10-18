@@ -1,6 +1,6 @@
 import { writeBatch, doc, collection } from 'firebase/firestore';
 import { db } from './config';
-import { menuItems } from '@/_mock/menuItems';
+import { menuItems } from '@/_mock/menu-items';
 
 /**
  * @desc 문서 배치 작업
