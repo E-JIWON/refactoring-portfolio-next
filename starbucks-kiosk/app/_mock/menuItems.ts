@@ -7,7 +7,16 @@ export const menuItems: MenuItem[] = [
          category: 'coffee',
          price: 2000,
          productName: '아메리카노(hot)',
-         imgSrc: 'americano_C',
+         imgSrc: 'americano.jpeg',
+      },
+   },
+   {
+      id: 'c_americano_i',
+      data: {
+         category: 'coffee',
+         price: 2200,
+         productName: '아메리카노(ice)',
+         imgSrc: 'americano_i.jpeg',
       },
    },
    {
@@ -15,8 +24,17 @@ export const menuItems: MenuItem[] = [
       data: {
          category: 'coffee',
          price: 3200,
-         productName: '카푸치노',
-         imgSrc: 'cappuccino_C',
+         productName: '카푸치노(hot)',
+         imgSrc: 'cappuccino.jpeg',
+      },
+   },
+   {
+      id: 'c_cappuccino_i',
+      data: {
+         category: 'coffee',
+         price: 3200,
+         productName: '카푸치노(hot)',
+         imgSrc: 'cappuccino_i.jpeg',
       },
    },
    {
@@ -24,8 +42,17 @@ export const menuItems: MenuItem[] = [
       data: {
          category: 'coffee',
          price: 3600,
-         productName: '카라멜 라떼',
-         imgSrc: 'caramel_C',
+         productName: '카라멜 라떼(hot)',
+         imgSrc: 'caramel.jpeg',
+      },
+   },
+   {
+      id: 'c_caramel_i',
+      data: {
+         category: 'coffee',
+         price: 3600,
+         productName: '카라멜 라떼(ice)',
+         imgSrc: 'caramel_i.jpeg',
       },
    },
    {
@@ -33,8 +60,35 @@ export const menuItems: MenuItem[] = [
       data: {
          category: 'coffee',
          price: 5200,
-         productName: '돌체 라떼',
-         imgSrc: 'dolce_C',
+         productName: '돌체 라떼(hot)',
+         imgSrc: 'dolce.jpeg',
+      },
+   },
+   {
+      id: 'c_dolce_i',
+      data: {
+         category: 'coffee',
+         price: 5200,
+         productName: '돌체 라떼(ice)',
+         imgSrc: 'dolce_i.jpeg',
+      },
+   },
+   {
+      id: 'c_dolce_coldbrew_i',
+      data: {
+         category: 'coffee',
+         price: 5200,
+         productName: '돌체 콜드브루(ice)',
+         imgSrc: 'dolce_coldbrew_i.jpeg',
+      },
+   },
+   {
+      id: 'c_double_shot',
+      data: {
+         category: 'coffee',
+         price: 5200,
+         productName: '더블 샷(hot)',
+         imgSrc: 'double_shot.jpeg',
       },
    },
    {
@@ -43,10 +97,55 @@ export const menuItems: MenuItem[] = [
          category: 'coffee',
          price: 1800,
          productName: '에스프레소',
-         imgSrc: 'esso_C',
+         imgSrc: 'esso.jpeg',
       },
    },
-   //etc
+   {
+      id: 'c_latte',
+      data: {
+         category: 'coffee',
+         price: 1800,
+         productName: '카페 라떼',
+         imgSrc: 'latte.jpeg',
+      },
+   },
+   {
+      id: 'c_moca',
+      data: {
+         category: 'coffee',
+         price: 1800,
+         productName: '카페 모카(hot)',
+         imgSrc: 'moca.jpeg',
+      },
+   },
+   {
+      id: 'c_moca_i',
+      data: {
+         category: 'coffee',
+         price: 1800,
+         productName: '카페 모카(ice)',
+         imgSrc: 'moca_i.jpeg',
+      },
+   },
+   {
+      id: 'c_nitro_coldbrew',
+      data: {
+         category: 'coffee',
+         price: 1800,
+         productName: '나이트로 콜드브루',
+         imgSrc: 'nitro_coldbrew.jpeg',
+      },
+   },
+   {
+      id: 'c_nitro_vanilla',
+      data: {
+         category: 'coffee',
+         price: 1800,
+         productName: '나이트로 바닐라',
+         imgSrc: 'nitro_vanilla.jpeg',
+      },
+   },
+   // etc
    {
       id: 'e_bagel_chip',
       data: {
@@ -149,30 +248,48 @@ export const menuItems: MenuItem[] = [
    },
    // seoson
    {
-      id: 'apple_tea',
+      id: 's_apple_tea',
       data: {
          category: 'seoson',
          price: 3400,
          productName: '애플 티',
-         imgSrc: 'autumn_apple_T',
+         imgSrc: 'apple_tea.jpg',
       },
    },
    {
-      id: 'black_glazed',
+      id: 's_apple_tea_i',
+      data: {
+         category: 'seoson',
+         price: 3400,
+         productName: '애플 티',
+         imgSrc: 'apple_tea_i.jpg',
+      },
+   },
+   {
+      id: 's_black_glazed',
       data: {
          category: 'seoson',
          price: 5800,
-         productName: '블랙 글레이즈드',
-         imgSrc: 'black_glazed_C',
+         productName: '블랙 글레이즈드(hot)',
+         imgSrc: 'black_glazed.jpeg',
       },
    },
    {
-      id: 's_green_new',
+      id: 's_black_glazed_i',
+      data: {
+         category: 'seoson',
+         price: 5800,
+         productName: '블랙 글레이즈드(ice)',
+         imgSrc: 'black_glazed_i.jpeg',
+      },
+   },
+   {
+      id: 's_green_cream',
       data: {
          category: 'seoson',
          price: 5800,
          productName: '녹차 크림 라떼',
-         imgSrc: 'green_new_F',
+         imgSrc: 'green_cream.jpg',
       },
    },
    //tea
@@ -181,8 +298,17 @@ export const menuItems: MenuItem[] = [
       data: {
          category: 'tea',
          price: 2800,
-         productName: '카모마일 티',
-         imgSrc: 'chamo_T',
+         productName: '카모마일 티(hot)',
+         imgSrc: 'chamo',
+      },
+   },
+   {
+      id: 't_chamo_i',
+      data: {
+         category: 'tea',
+         price: 2800,
+         productName: '카모마일 티(ice)',
+         imgSrc: 'chamo_i',
       },
    },
    {
