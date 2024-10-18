@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import './globals.css';
-import ThemeProvider from '@/_ui/provider/(theme)/ThemeProvider';
+import '@/_ui/styles/globals.css';
 import { Gowun_Batang } from 'next/font/google';
-import ManagerComponent from './(home)/_compoents/ManagerComponent';
-import Link from 'next/link';
+import ManagerComponent from './(home)/components/ManagerComponent';
+import ThemeProvider from './_context/theme/ThemeProvider';
 
 const gowunBatangFont = Gowun_Batang({
    subsets: ['latin'],

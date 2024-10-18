@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import useThemeStore from '@/_store/themeStore';
 import { ThemeType } from '@/_types/themeType';
 
+/** @desc 테마 감시 함수 - 초기상태를 받아오고, 전역 상태 변경 감시*/
 export default function ThemeDetector({
    defaultTheme,
    children,

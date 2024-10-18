@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import ManagerComponent from './_compoents/ManagerComponent';
+import ManagerComponent from './components/ManagerComponent';
 
 export default function Home() {
    return (
