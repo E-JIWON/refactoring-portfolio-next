@@ -2,7 +2,10 @@ import { writeBatch, doc, collection } from 'firebase/firestore';
 import { db } from './config';
 import { menuItems } from '@/_mock/menuItems';
 
-// 여러 문서 추가 함수
+/**
+ * @desc 문서 배치 작업
+ *
+ */
 export const addMultipleDocuments = async () => {
    const batch = writeBatch(db);
 

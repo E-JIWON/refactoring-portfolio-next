@@ -12,18 +12,28 @@ const config: Config = {
          colors: {
             light: {
                white: {
-                  500: '#dbd6c1',
+                  light: '#dbd6c1',
+               },
+               orange: {
+                  light: '#d2925f',
                },
                green: {
-                  500: '#001e1e',
+                  light: '#1b3c35',
+                  dark: '#1b3c35',
+                  deep: '#001e1e',
                },
             },
             dark: {
                white: {
-                  500: '#dbd6c1',
+                  light: '#dbd6c1',
+               },
+               orange: {
+                  light: '#d2925f',
                },
                green: {
-                  500: '#001e1e',
+                  light: '#1b3c35',
+                  dark: '#1b3c35',
+                  deep: '#001e1e',
                },
             },
          },

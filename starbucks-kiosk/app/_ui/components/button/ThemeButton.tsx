@@ -20,7 +20,7 @@ const ThemeButton = () => {
             toggleTheme();
          }}
       >
-         {theme ? theme : 'Lading...'}
+         {/* {theme ? theme : 'Lading...'} */}
       </button>
    );
 };

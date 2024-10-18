@@ -1,23 +1,14 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-// import { addMultipleDocuments } from '@/_lib/firebaseConfig';
-
 /** @desc 메뉴 리스트 페이지 */
 const MenuListPage = () => {
-   // DB 한번에 저장하는거임 !
-   // useEffect(() => {
-   //    addMultipleDocuments();
-   // }, []);
-
    const [data, setData] = useState<any[]>([]);
 
    useEffect(() => {
       console.log('jiwon ;;');
       const fetchData = async () => {
          const response = await fetch('/menu/api');
-         // const result = await response;
-         // setData(result.data);
 
          console.log('jiwon response ??', response);
          // console.log('jiwon result', result);

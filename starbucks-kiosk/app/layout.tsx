@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import ThemeProvider from '@/_ui/provider/(theme)/ThemeProvider';
 import { Gowun_Batang } from 'next/font/google';
+import ManagerComponent from './(home)/_compoents/ManagerComponent';
+import Link from 'next/link';
 
 const gowunBatangFont = Gowun_Batang({
    subsets: ['latin'],
@@ -26,8 +28,13 @@ export default function RootLayout({
       <html lang="ko">
          <body className={`${gowunBatangFont.className} antialiased`}>
             <ThemeProvider>
-               <div className="w-[700px] h-[900px] mx-auto bg-light-green-500 text-light-white-500">
-                  {children}
+               <div className="mt-4 w-[900px] h-[1200px] mx-auto flex">
+                  <div className="w-full h-full grid grid-rows-[auto_1fr]">
+                     <ManagerComponent />
+                     <main className=" bg-light-green-deep text-light-white-light">
+                        {children}
+                     </main>
+                  </div>
                </div>
             </ThemeProvider>
          </body>
