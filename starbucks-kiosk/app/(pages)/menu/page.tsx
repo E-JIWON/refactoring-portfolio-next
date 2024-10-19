@@ -1,40 +1,18 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import MenuContent from './components/MenuContent';
+
+const fetchData = async () => {
+   const response = await fetch('http://localhost:3000/menu/api');
+   return response.json();
+};
 
 /** @desc 메뉴 리스트 페이지 */
-const MenuListPage = () => {
-   const [data, setData] = useState<any[]>([]);
+const MenuListPage = async () => {
+   const a = await fetchData();
 
-   useEffect(() => {
-      console.log('jiwon ;;');
-      const fetchData = async () => {
-         const response = await fetch('/menu/api');
+   console.log('jiwo a', a);
 
-         console.log('jiwon response ??', response);
-         // console.log('jiwon result', result);
-      };
-
-      fetchData();
-   }, []);
-
-   useEffect(() => {
-      console.log('jiwon ', data);
-   }, [data]);
-
-   return (
-      <section>
-         {/* 메뉴 리스트 */}
-         <div>
-            <ul>
-               <li>메뉴1</li>
-               <li>메뉴2</li>
-               <li>메뉴3</li>
-               <li>메뉴4</li>
-               <li>메뉴5</li>
-            </ul>
-         </div>
-      </section>
-   );
+   return <MenuContent />;
 };
 
 export default MenuListPage;
