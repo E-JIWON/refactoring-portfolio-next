@@ -142,7 +142,7 @@ $(function(){
                             temp_first_ul_first +=`
                                 <li>
                                         <figure class="figure_area">
-                                            <div class="menu_image" style="background-image:url('./image/${item.img_src}')"></div>
+                                            <div class="menu_image" style="background-image:url('./image_2/${item.img_src}')"></div>
                                             <figcaption class="menu_name">${item.product_name}</figcaption>
                                             <figcaption class="menu_price_wrap">
                                                 <span class="menu_price">${thounsandComma(item.price)}</span>
@@ -157,7 +157,7 @@ $(function(){
                             temp_second_ul_first +=`
                                 <li>
                                         <figure class="figure_area">
-                                            <div class="menu_image" style="background-image:url('./image/${item.img_src}')"></div>
+                                            <div class="menu_image" style="background-image:url('./image_2/${item.img_src}')"></div>
                                             <figcaption class="menu_name">${item.product_name}</figcaption>
                                             <figcaption class="menu_price_wrap">
                                                 <span class="menu_price">${thounsandComma(item.price)}</span>
@@ -172,7 +172,7 @@ $(function(){
                             temp_first_ul_second +=`
                                 <li>
                                         <figure class="figure_area">
-                                            <div class="menu_image" style="background-image:url('./image/${item.img_src}')"></div>
+                                            <div class="menu_image" style="background-image:url('./image_2/${item.img_src}')"></div>
                                             <figcaption class="menu_name">${item.product_name}</figcaption>
                                             <figcaption class="menu_price_wrap">
                                                 <span class="menu_price">${thounsandComma(item.price)}</span>
@@ -186,7 +186,7 @@ $(function(){
                             temp_second_ul_second +=`
                                 <li>
                                         <figure class="figure_area">
-                                            <div class="menu_image" style="background-image:url('./image/${item.img_src}')"></div>
+                                            <div class="menu_image" style="background-image:url('./image_2/${item.img_src}')"></div>
                                             <figcaption class="menu_name">${item.product_name}</figcaption>
                                             <figcaption class="menu_price_wrap">
                                                 <span class="menu_price">${thounsandComma(item.price)}</span>
@@ -200,7 +200,7 @@ $(function(){
                             temp_first_ul_third +=`
                                 <li>
                                         <figure class="figure_area">
-                                            <div class="menu_image" style="background-image:url('./image/${item.img_src}')"></div>
+                                            <div class="menu_image" style="background-image:url('./image_2/${item.img_src}')"></div>
                                             <figcaption class="menu_name">${item.product_name}</figcaption>
                                             <figcaption class="menu_price_wrap">
                                                 <span class="menu_price">${thounsandComma(item.price)}</span>
@@ -214,7 +214,7 @@ $(function(){
                             temp_second_ul_third +=`
                                 <li>
                                         <figure class="figure_area">
-                                            <div class="menu_image" style="background-image:url('./image/${item.img_src}')"></div>
+                                            <div class="menu_image" style="background-image:url('./image_2/${item.img_src}')"></div>
                                             <figcaption class="menu_name">${item.product_name}</figcaption>
                                             <figcaption class="menu_price_wrap">
                                                 <span class="menu_price">${thounsandComma(item.price)}</span>
