@@ -2,6 +2,13 @@
 #env
 .env.local
 
+#sql문
+.legacy-code/sql
+
+#db inc
+.legacy-code/inc
+
+
 # dependencies
 /node_modules
 /.pnp
