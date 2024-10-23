@@ -38,5 +38,11 @@ export const kyRequest = async <TypeResponse, TypeRequest = unknown>(
     return response as Response<TypeResponse>;
   } catch (error) {
     console.error(`@@@@ method : ${method}, url : ${url} , params : ${params} request failed @@@`, error);
+    if (error instanceof Error) {
+      throw new Error(`Request failed: ${error.message}`);
+    } else {
+      throw new Error('An unknown error occurred');
+    }
+  }
   }
 };
