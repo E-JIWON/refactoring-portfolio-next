@@ -1,18 +1,15 @@
 import React from 'react';
 import MenuContent from './components/MenuContent';
-
-const fetchData = async () => {
-   const response = await fetch('http://localhost:3000/menu/api');
-   return response.json();
-};
+import getMenuData from '@/_api/menu';
 
 /** @desc 메뉴 리스트 페이지 */
 const MenuListPage = async () => {
-   const a = await fetchData();
+  const menuData = await getMenuData();
 
-   console.log('jiwo a', a);
-
-   return <MenuContent />;
+  if (!menuData) {
+    return <></>;
+  }
+  return <MenuContent menuData={menuData} />;
 };
 
 export default MenuListPage;

@@ -2,17 +2,13 @@
 
 import useOrder from '@/_hooks/order/useOrder';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import React from 'react';
 
 const MainContent = () => {
-  const { orderOption, setOrderOption } = useOrder();
+  const { setOrderOption } = useOrder();
 
   const LinkClass =
     'flex h-full w-1/2 items-center justify-center bg-light-green-deep text-[45px] font-black text-light-orange-light';
-
-  useEffect(() => {
-    console.log('jiwon orderOption', orderOption);
-  }, [orderOption]);
 
   return (
     <div className='h-full w-full'>
