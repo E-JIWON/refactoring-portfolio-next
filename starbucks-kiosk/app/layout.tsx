@@ -29,8 +29,8 @@ export default function RootLayout({
       <body className={`${gowunBatangFont.className} antialiased`}>
         <ThemeProvider>
           <OrderProvider>
-            <div className='mx-auto flex max-h-screen w-[900px]'>
-              <div className='grid h-screen w-full grid-rows-[auto_1fr]'>
+            <div className='mx-auto flex py-5 h-screen w-[900px]'>
+              <div className='grid h-full w-full grid-rows-[auto_1fr]'>
                 <ManagerComponent />
                 <main className='bg-light-green-deep text-light-white-light'>{children}</main>
               </div>
