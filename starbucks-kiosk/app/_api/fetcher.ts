@@ -12,14 +12,18 @@ const fetcher = ky.create({
     //요청 전 작업
     beforeRequest: [
       (request) => {
-        console.log('jiwon beforeRequest request', request);
+        console.log('📡 Request:', {
+          method: request.method,
+          url: request.url,
+        });
       },
     ],
     afterResponse: [
-      (request, option, response) => {
-        console.log('jiwon afterResponse request', request);
-        console.log('jiwon afterResponse option', option);
-        console.log('jiwon afterResponse response', response);
+      (_request, _options, response) => {
+        console.log('✅ Response:', {
+          status: response.status,
+          ok: response.ok,
+        });
       },
     ],
   },
@@ -33,10 +37,19 @@ export const kyRequest = async <TypeResponse, TypeRequest = unknown>(
 ) => {
   try {
     const response = await fetcher[method](url, { ...config, json: params }).json<Response<TypeResponse>>();
-    console.log('@@@@ kyRequest response @@@');
+
+    console.log('🤫 kyRequest Response:', {
+      data: response.data,
+      statusCd: response.statusCd,
+      statusMsg: response.statusMsg,
+    });
 
     return response as Response<TypeResponse>;
   } catch (error) {
-    console.error(`@@@@ method : ${method}, url : ${url} , params : ${params} request failed @@@`, error);
+    console.error('❌ Error:', {
+      method,
+      url,
+      message: error instanceof Error ? error.message : 'Unknown error',
+    });
   }
 };

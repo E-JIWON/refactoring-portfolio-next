@@ -1,6 +1,5 @@
 import { MenuItemResponse } from '@/_types/menu';
 import { kyRequest } from './fetcher';
-import { cookies } from 'next/headers';
 
 const getMenuList = async () => {
   try {

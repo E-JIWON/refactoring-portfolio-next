@@ -2,17 +2,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/_lib/firebase/config';
-import { MenuItemDTO } from '@/_types/menu';
+import { MenuItemData, MenuItemDTO } from '@/_types/menu';
 
 /** @desc 메뉴 리스트 GET */
 export async function GET(req: NextRequest) {
   try {
     const querySnapshot = await getDocs(collection(db, 'menu_item'));
 
-    const data: MenuItemDTO[] = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      data: doc.data() as MenuItemDTO['data'],
-    }));
+    const data: MenuItemData[] = querySnapshot.docs.map((doc) => {
+      return doc.data() as MenuItemData;
+    });
 
     return NextResponse.json({ data });
   } catch (err) {
