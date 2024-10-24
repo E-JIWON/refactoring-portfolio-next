@@ -4,3 +4,6 @@
 
 ## 현재 스타벅스 프로젝트 진행 중
 - https://github.com/E-JIWON/refactoring-portfolio-next/tree/main/starbucks-kiosk
+
+### 버셀 배포 링크
+- https://starbucks-kiosk-umber.vercel.app/
