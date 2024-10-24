@@ -1,8 +1,8 @@
-```bash
-npm run dev
-# or
-yarn dev
-```
+
+# 진행 사항 
+
+# vercel 배포 
+- https://starbucks-kiosk-umber.vercel.app/
 
 # 프로젝트 설명
 
