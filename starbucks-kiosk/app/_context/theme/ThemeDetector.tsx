@@ -18,6 +18,9 @@ export default function ThemeDetector({
   // 초기값이 비어있지 않을경우 theme를 적용
   useEffect(() => {
     if (themeStatus !== '') setTheme(themeStatus);
+
+    // 해당 의존성 배열은 일부러 비워둔 것임
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //

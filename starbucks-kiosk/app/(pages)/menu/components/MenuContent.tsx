@@ -166,7 +166,9 @@ const MenuContent = ({ menuData }: { menuData: MenuItemResponse }) => {
         <ul className='grid grid-cols-4 gap-x-4 gap-y-8'>
           {seasonMenu.map((item) => {
             return (
-              <li className='h-72 rounded-3xl bg-light-white-light p-4'>
+              <li
+                key={item.productName}
+                className='h-72 rounded-3xl bg-light-white-light p-4'>
                 <figure>
                   <div className='relative mb-2 h-48 w-full overflow-hidden rounded-2xl'>
                     <Image
