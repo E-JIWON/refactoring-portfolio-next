@@ -10,7 +10,7 @@ export default function RootLayout({
         <div>스타벅스 아이콘</div>
         <div></div>
       </header>
-      <section>{children}</section>
+      <>{children}</>
     </>
   );
 }
