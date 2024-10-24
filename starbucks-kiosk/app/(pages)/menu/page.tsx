@@ -2,16 +2,17 @@ export const dynamic = 'force-dynamic';
 
 import React from 'react';
 import MenuContent from './components/MenuContent';
-import getMenuData from '@/_api/menu';
+import getMenuList from '@/_api/menu';
 
 /** @desc 메뉴 리스트 페이지 */
 const MenuListPage = async () => {
-  const menuData = await getMenuData();
+  const res = await getMenuList();
 
-  if (!menuData) {
-    return <></>;
+  if (!res?.data) {
+    return <>{res?.message}</>;
   }
-  return <MenuContent menuData={menuData} />;
+
+  return <MenuContent menuData={res.data} />;
 };
 
 export default MenuListPage;

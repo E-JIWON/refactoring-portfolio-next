@@ -40,7 +40,7 @@ const MenuContent = ({ menuData }: { menuData: MenuItemResponse }) => {
                     {item.productName}
                   </figcaption>
                   <figcaption className='text-center text-2xl font-semibold text-light-orange-light'>
-                    <span className=''>3,400</span>
+                    <span>3,400</span>
                     <span>원</span>
                   </figcaption>
                 </figure>

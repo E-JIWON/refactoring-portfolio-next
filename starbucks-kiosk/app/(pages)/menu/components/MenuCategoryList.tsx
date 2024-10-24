@@ -1,53 +1,32 @@
 import { MENU_CATEGORY } from '@/_constants/MENU_CATEGORY';
 import React, { useEffect, useRef, useState } from 'react';
 
-/**
- * @desc 메뉴 아이템의 위치와 크기 정보를 담는 타입
- * @property {number} idx - 메뉴 아이템의 인덱스
- * @property {number} left - 메뉴 아이템의 왼쪽 위치 (offsetLeft)
- * @property {number} width - 메뉴 아이템의 너비
- */
-type MenuState = {
-  idx: number;
-  left: number;
-  width: number;
-};
+interface MenuState {
+  idx: number; // 메뉴 아이템의 인덱스
+  left: number; // 메뉴 아이템의 왼쪽 위치 (offsetLeft)
+  width: number; // 메뉴 아이템의 너비
+}
 
-/**
- * @desc 호버 상태를 관리하는 타입
- * @property {MenuState | null} current - 현재 호버된 메뉴 상태
- * @property {MenuState | null} previous - 이전에 호버된 메뉴 상태
- */
-type HoverMenuState = {
-  current: MenuState | null;
-  previous: MenuState | null;
-};
+interface HoverMenuState {
+  current: MenuState | null; // 현재 호버된 메뉴 상태
+  previous: MenuState | null; // 이전에 호버된 메뉴 상태
+}
 
-/**
- * @desc 메뉴 컨텐츠 컴포넌트
- * @param {MenuItemResponse} menuData - 메뉴 데이터 배열
- */
 const MenuCategoryList = () => {
-  // Refs
-  /** @desc 슬라이더의 위치 계산을 위한 메뉴 리스트 ref */
-  const navRef = useRef<HTMLUListElement>(null);
-
-  // States
-  /** @desc 현재 활성화된(클릭된) 메뉴 상태 */
+  const navRef = useRef<HTMLUListElement>(null); // 슬라이더 위치 계산을 위한 ref
+  const sliderClass = 'absolute top-1/2 mt-0.5 h-[80%] origin-center -translate-y-1/2 rounded-3xl'; // slider common css
   const [activeMenu, setActiveMenu] = useState<MenuState>({
     idx: 0,
     left: 0,
     width: 0,
   });
 
-  /** @desc 호버된 메뉴 상태 (현재 + 이전) */
   const [hoverMenu, setHoverMenu] = useState<HoverMenuState>({
     current: null,
     previous: null,
   });
 
-  // Lifecycle
-  /** @desc 컴포넌트 마운트 시 초기 메뉴 위치 설정 */
+  // 컴포넌트 마운트 시 초기 메뉴 위치 설정
   useEffect(() => {
     if (navRef.current) {
       const clickableItem = navRef.current.children[activeMenu.idx] as HTMLLIElement;
@@ -61,11 +40,7 @@ const MenuCategoryList = () => {
     }
   }, []);
 
-  // Event Handlers
-  /**
-   * @desc 메뉴 클릭 이벤트 핸들러
-   * @param {number} idx - 클릭된 메뉴의 인덱스
-   */
+  // 클릭 시 메뉴 위치 계산
   const onClickMenu = (idx: number) => {
     if (navRef.current) {
       const clickableItem = navRef.current.children[idx] as HTMLLIElement;
@@ -77,10 +52,7 @@ const MenuCategoryList = () => {
     }
   };
 
-  /**
-   * @desc 메뉴 호버 시작 이벤트 핸들러
-   * @param {number} idx - 호버된 메뉴의 인덱스
-   */
+  // 호버 시 이전 위치, 현재 위치 저장
   const onMouseEnter = (idx: number) => {
     if (navRef.current) {
       const hoveredItem = navRef.current.children[idx] as HTMLLIElement;
@@ -95,10 +67,7 @@ const MenuCategoryList = () => {
     }
   };
 
-  /**
-   * @desc 메뉴 호버 종료 이벤트 핸들러
-   * 호버가 끝날 때 현재 상태를 이전 상태로 저장하고 현재 상태를 null로 설정
-   */
+  // 호버 종료 시 초기화
   const onMouseLeave = () => {
     setHoverMenu((prev) => ({
       previous: prev.current,
@@ -114,10 +83,10 @@ const MenuCategoryList = () => {
         {/* 메뉴 아이템 리스트 */}
         {MENU_CATEGORY.map((item, idx) => (
           <li
-            key={item + idx}
+            key={item}
             onClick={() => onClickMenu(idx)}
             onMouseEnter={() => onMouseEnter(idx)}
-            onMouseLeave={() => onMouseLeave()}
+            onMouseLeave={onMouseLeave}
             className='z-10 h-full w-fit cursor-pointer px-8 text-center text-[32px] leading-[80px]'>
             {item}
           </li>
@@ -125,7 +94,7 @@ const MenuCategoryList = () => {
 
         {/* Active Slider */}
         <div
-          className='absolute top-1/2 mt-0.5 h-[80%] origin-center -translate-y-1/2 rounded-3xl bg-light-green-bright transition-[all_0.6s_cubic-bezier(0.23,1,0.32,1.05)]'
+          className={`${sliderClass} bg-light-green-bright`}
           style={{
             left: activeMenu.left,
             width: activeMenu.width,
@@ -135,7 +104,7 @@ const MenuCategoryList = () => {
 
         {/* Hover Slider */}
         <div
-          className='absolute top-1/2 mt-0.5 h-[80%] origin-center -translate-y-1/2 rounded-3xl bg-light-green-dark/50 transition-[all_0.6s_cubic-bezier(0.23,1,0.32,1.05)]'
+          className={`${sliderClass} bg-light-green-dark/50`}
           style={{
             left: hoverMenu?.current?.left ?? hoverMenu?.previous?.left ?? 0,
             width: hoverMenu?.current?.width ?? hoverMenu?.previous?.width ?? 0,
