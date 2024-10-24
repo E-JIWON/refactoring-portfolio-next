@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import React from 'react';
 import MenuContent from './components/MenuContent';
 import getMenuData from '@/_api/menu';
