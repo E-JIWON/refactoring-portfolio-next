@@ -36,12 +36,14 @@ export const kyRequest = async <TypeResponse, TypeRequest = unknown>(
   config: Options = {},
 ) => {
   try {
-    const response = await fetcher[method](url, { ...config, json: params }).json<Response<TypeResponse>>();
+    const response = await fetcher[method](url, { ...config, json: params }).json<
+      Response<TypeResponse>
+    >();
 
     console.log('🤫 kyRequest Response:', {
       data: response.data,
-      statusCd: response.statusCd,
-      statusMsg: response.statusMsg,
+      statusCd: response.status,
+      statusMsg: response.message,
     });
 
     return response as Response<TypeResponse>;

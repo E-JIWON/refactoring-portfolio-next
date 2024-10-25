@@ -3,7 +3,7 @@ import '@/_ui/styles/globals.css';
 import { Gowun_Batang } from 'next/font/google';
 import ManagerComponent from './_ui/components/layout/ManagerComponent';
 import ThemeProvider from './_context/theme/ThemeProvider';
-import { OrderProvider } from './_context/order/OrderContext';
+import { OrderProvider } from './_context/OrderContext';
 
 const gowunBatangFont = Gowun_Batang({
   subsets: ['latin'],
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${gowunBatangFont.className} antialiased`}>
         <ThemeProvider>
           <OrderProvider>
-            <div className='mx-auto flex py-5 h-screen w-[900px]'>
+            <div className='mx-auto flex h-screen w-[900px] py-5'>
               <div className='grid h-full w-full grid-rows-[auto_1fr]'>
                 <ManagerComponent />
                 <main className='bg-light-green-deep text-light-white-light'>{children}</main>

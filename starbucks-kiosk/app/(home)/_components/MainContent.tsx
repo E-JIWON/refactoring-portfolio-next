@@ -1,6 +1,6 @@
 'use client';
 
-import useOrder from '@/_hooks/order/useOrder';
+import useOrder from '@/_hooks/useOrder';
 import Link from 'next/link';
 import React from 'react';
 

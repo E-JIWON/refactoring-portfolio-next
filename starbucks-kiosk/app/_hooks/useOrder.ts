@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { OrderContext } from '@/_context/order/OrderContext';
+import { OrderContext } from '@/_context/OrderContext';
 
 /**
  * @desc 주문 정보를 사용하기 위한 커스텀 훅 (현재 주문 옵션을 가져오거나 변경)
