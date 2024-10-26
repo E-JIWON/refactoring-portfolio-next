@@ -1,10 +1,10 @@
-import { MENU_CATEGORY } from '@/_constants/MENU_CATEGORY';
 import React, { useEffect, useRef, useState } from 'react';
+import { MenuState } from './MenuContent';
+import { MENU_CATEGORY } from '@/_constants/MENU_CATEGORY';
 
-interface MenuState {
-  idx: number; // 메뉴 아이템의 인덱스
-  left: number; // 메뉴 아이템의 왼쪽 위치 (offsetLeft)
-  width: number; // 메뉴 아이템의 너비
+interface MenuCategoryListProps {
+  activeMenu: MenuState;
+  setActiveMenu: React.Dispatch<React.SetStateAction<MenuState>>;
 }
 
 interface HoverMenuState {
@@ -12,14 +12,10 @@ interface HoverMenuState {
   previous: MenuState | null; // 이전에 호버된 메뉴 상태
 }
 
-const MenuCategoryList = () => {
+const MenuCategoryList = ({ ...props }: MenuCategoryListProps) => {
+  const { activeMenu, setActiveMenu } = props;
   const navRef = useRef<HTMLUListElement>(null); // 슬라이더 위치 계산을 위한 ref
   const sliderClass = 'absolute top-1/2 mt-0.5 h-[80%] origin-center -translate-y-1/2 rounded-3xl'; // slider common css
-  const [activeMenu, setActiveMenu] = useState<MenuState>({
-    idx: 0,
-    left: 0,
-    width: 0,
-  });
 
   const [hoverMenu, setHoverMenu] = useState<HoverMenuState>({
     current: null,
@@ -83,12 +79,12 @@ const MenuCategoryList = () => {
         {/* 메뉴 아이템 리스트 */}
         {MENU_CATEGORY.map((item, idx) => (
           <li
-            key={item}
+            key={item.idx}
             onClick={() => onClickMenu(idx)}
             onMouseEnter={() => onMouseEnter(idx)}
             onMouseLeave={onMouseLeave}
             className='z-10 h-full w-fit cursor-pointer px-8 text-center text-[32px] leading-[80px]'>
-            {item}
+            {item.name}
           </li>
         ))}
 
