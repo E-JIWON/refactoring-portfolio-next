@@ -13,6 +13,7 @@ const Button = ({
   form = 'primary',
   size = 'medium',
   className,
+  ariaLabel,
   ...props
 }: ButtonProps) => {
   const buttonClass = `${buttonStyles.base} ${buttonStyles.form[form]} ${buttonStyles.size[size]} ${className}`;
@@ -20,6 +21,7 @@ const Button = ({
   return (
     <button
       className={buttonClass}
+      aria-label={ariaLabel}
       {...props}>
       {children}
     </button>
