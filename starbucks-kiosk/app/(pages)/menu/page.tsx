@@ -6,7 +6,7 @@ import getMenuList from '@/_api/menu';
 
 /** @desc 메뉴 리스트 페이지 */
 const MenuListPage = async () => {
-  const res = await getMenuList();
+  const res = await getMenuList('coffee');
 
   if (!res?.data) {
     return <>{res?.message}</>;

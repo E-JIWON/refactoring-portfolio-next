@@ -31,9 +31,13 @@ export const OrderContext = createContext<OrderContextType | undefined>(undefine
  * @param {ReactNode} props.children - 자식 컴포넌트들
  */
 
-export const OrderProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const OrderProvider = ({ children }: { children: ReactNode }) => {
   const [orderOption, setOrderOption] = useState<OrderOption>(null);
 
   // 컨텍스트 제공자를 반환하여 자식 컴포넌트들에게 주문 정보를 제공
-  return <OrderContext.Provider value={{ orderOption, setOrderOption }}>{children}</OrderContext.Provider>;
+  return (
+    <OrderContext.Provider value={{ orderOption, setOrderOption }}>
+      {children}
+    </OrderContext.Provider>
+  );
 };

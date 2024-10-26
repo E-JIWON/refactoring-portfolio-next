@@ -17,6 +17,8 @@ export interface MenuState {
 
 const MenuContent = ({ ...props }: MenuContetProps) => {
   const { menuData } = props;
+  console.log('jiwon menuData', menuData);
+
   const [activeMenu, setActiveMenu] = useState<MenuState>({
     idx: 0,
     left: 0,
