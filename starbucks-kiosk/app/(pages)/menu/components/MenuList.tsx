@@ -13,14 +13,6 @@ interface MenuListProps {
 }
 const MenuList = ({ ...props }: MenuListProps) => {
   const { menuData } = props;
-  /** @desc 카테고리별 메뉴 필터링 */
-  const seasonMenu = menuData.filter((item: MenuItemData) => item.category === 'season');
-  const coffeeMenu = menuData.filter((item: MenuItemData) => item.category === 'coffee');
-  const frappuccinoMenu = menuData.filter((item: MenuItemData) => item.category === 'frappuccino');
-  const etcMenu = menuData.filter((item: MenuItemData) => item.category === 'etc');
-  const teaMenu = menuData.filter((item: MenuItemData) => item.category === 'tea');
-
-  useEffect(() => {}, []);
 
   /** 카테고리 별로 8개씩 잘라서 2차원 배열로 만들어주는 작업 */
   const getCategoryGroupItems = (items: MenuItemData[]): MenuItemData[][] => {
@@ -31,11 +23,7 @@ const MenuList = ({ ...props }: MenuListProps) => {
     return result;
   };
 
-  const seasonList = getCategoryGroupItems(seasonMenu);
-  const coffeeList = getCategoryGroupItems(coffeeMenu);
-  const frappuccinList = getCategoryGroupItems(frappuccinoMenu);
-  const etcList = getCategoryGroupItems(etcMenu);
-  const teaList = getCategoryGroupItems(teaMenu);
+  const categoryMenuList = getCategoryGroupItems(menuData);
 
   return (
     <section className='mt-5 max-w-[900px] px-5'>
@@ -45,7 +33,8 @@ const MenuList = ({ ...props }: MenuListProps) => {
           prevEl: '.swiper-button-prev',
         }}
         modules={[Navigation]}>
-        {coffeeList.map((group, groupIdx) => {
+        {categoryMenuList.map((group, groupIdx) => {
+          console.log('jiwon group', group);
           return (
             <SwiperSlide key={groupIdx}>
               <ul className='grid grid-cols-4 gap-x-4 gap-y-8'>
@@ -57,7 +46,7 @@ const MenuList = ({ ...props }: MenuListProps) => {
                       <figure>
                         <div className='relative mb-2 h-48 w-full overflow-hidden rounded-2xl'>
                           <Image
-                            src={'/images/menu/coffee/' + item.imgSrc}
+                            src={`/images/menu/${item.category}/${item.imgSrc}`}
                             alt={item.productName}
                             fill
                             className='object-cover'

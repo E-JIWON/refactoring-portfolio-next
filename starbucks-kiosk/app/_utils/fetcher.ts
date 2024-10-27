@@ -3,7 +3,7 @@ import ky from 'ky';
 import { HttpMethod, Input, Options } from 'node_modules/ky/distribution/types/options';
 
 const fetcher = ky.create({
-  prefixUrl: process.env.NEXT_PUBLIC_API_HOST,
+  // prefixUrl: process.env.NEXT_PUBLIC_API_HOST,
   timeout: 10000, // 일정 시간 이상일 경우 timeout
   headers: {
     'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const kyRequest = async <TypeResponse, TypeRequest = unknown>(
   method: HttpMethod,
   url: Input,
   params?: TypeRequest,
-  config: Options = {},
+  config: Options = {}
 ) => {
   try {
     const response = await fetcher[method](url, { ...config, json: params }).json<
