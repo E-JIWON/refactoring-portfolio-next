@@ -10,7 +10,8 @@ const ReactQueryProvider = ({ children }: { children: ReactNode }) => {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 60 * 1000, // 1분
+            staleTime: 1000 * 60 * 5, // 👈 5분간 데이터 신선도 유지
+            gcTime: 1000 * 60 * 30, // 👈 30분간 캐시 보관
             retry: 1,
             refetchOnWindowFocus: false,
           },

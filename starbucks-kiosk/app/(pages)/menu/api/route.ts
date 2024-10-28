@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '@/_lib/firebase/config';
-import { MenuItemData } from '@/_types/menu';
+import { MenuListResponse } from '@/_types/menu';
 
 /** @desc 메뉴 리스트 GET */
 export async function GET(req: NextRequest) {
@@ -17,11 +17,11 @@ export async function GET(req: NextRequest) {
     const q = query(collection(db, 'menu_item'), where('category', '==', category));
     const querySnapshot = await getDocs(q);
 
-    const data: MenuItemData[] = querySnapshot.docs.map((doc) => {
-      return doc.data() as MenuItemData;
+    const data = querySnapshot.docs.map((doc) => {
+      return doc.data();
     });
 
-    return NextResponse.json({ data });
+    return NextResponse.json(data);
   } catch (err) {
     console.error('Error fetching documents:', err);
 

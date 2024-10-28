@@ -1,43 +1,18 @@
 'use client';
 
-import { MenuItemResponse } from '@/_types/menu';
+import { MenuListResponse } from '@/_types/menu';
 import React, { useState } from 'react';
 import MenuCategoryList from './MenuCategoryList';
-import MenuList from './MenuList';
+import MenuItemList from './MenuItemList';
 
-interface MenuContetProps {
-  menuData: MenuItemResponse;
-}
-
-export interface MenuState {
-  idx: number; // 메뉴 아이템의 인덱스
-  left: number; // MenuCategoryList - 메뉴 아이템의 왼쪽 위치 (offsetLeft)
-  width: number; // MenuCategoryList -
-}
-
-const MenuContent = ({ ...props }: MenuContetProps) => {
-  const { menuData } = props;
-  console.log('jiwon menuData', menuData);
-
-  const [activeMenu, setActiveMenu] = useState<MenuState>({
-    idx: 0,
-    left: 0,
-    width: 0,
-  });
-
+const MenuContent = () => {
   return (
     <section className='grid h-full w-full grid-rows-[80px_2fr_1fr]'>
       {/* 카테고리 네비게이션 */}
-      <MenuCategoryList
-        activeMenu={activeMenu}
-        setActiveMenu={setActiveMenu}
-      />
+      <MenuCategoryList />
 
       {/* 메뉴 리스트  */}
-      <MenuList
-        menuData={menuData}
-        activeMenu={activeMenu}
-      />
+      <MenuItemList />
 
       <div>결과 나오는 곳</div>
     </section>

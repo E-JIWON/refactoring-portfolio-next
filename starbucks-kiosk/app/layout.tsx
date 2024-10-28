@@ -4,7 +4,6 @@ import { Gowun_Batang } from 'next/font/google';
 import ManagerComponent from './_ui/components/layout/ManagerComponent';
 
 import { OrderProvider } from './_context/OrderContext';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import ThemeProvider from './_provider/ThemeProvider';
 import ReactQueryProvider from './_provider/ReactQueryProvider';
 

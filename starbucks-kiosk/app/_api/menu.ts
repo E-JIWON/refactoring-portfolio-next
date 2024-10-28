@@ -1,13 +1,14 @@
-import { MenuItemResponse } from '@/_types/menu';
+import { MenuListResponse } from '@/_types/menu';
 import { kyRequest } from '../_utils/fetcher';
 import Response from '@/_types/api/Response';
 
-const getMenuList = async (params: string) => {
+const getMenuList = async (category: string) => {
   try {
-    const res = await kyRequest<MenuItemResponse>(
-      'get',
-      ` http://localhost:3000/menu/api?category=${params}`
-    );
+    const res = await kyRequest<MenuListResponse[]>('get', 'menu/api', undefined, {
+      searchParams: {
+        category,
+      },
+    });
     return res;
   } catch (error) {
     console.error('getMenuList error', error);
