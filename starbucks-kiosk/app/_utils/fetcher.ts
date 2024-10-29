@@ -3,7 +3,7 @@ import ky from 'ky';
 import { HttpMethod, Input, Options } from 'node_modules/ky/distribution/types/options';
 
 const fetcher = ky.create({
-  // prefixUrl: process.env.NEXT_PUBLIC_API_HOST,
+  prefixUrl: process.env.NEXT_PUBLIC_API_HOST,
   timeout: 10000, // 일정 시간 이상일 경우 timeout
   headers: {
     'Content-Type': 'application/json',
@@ -36,17 +36,15 @@ export const kyRequest = async <TypeResponse, TypeRequest = unknown>(
   config: Options = {}
 ) => {
   try {
-    const response = await fetcher[method](url, { ...config, json: params }).json<
-      Response<TypeResponse>
-    >();
+    const response = await fetcher[method](url, { ...config, json: params }).json<TypeResponse>();
 
-    console.log('🤫 kyRequest Response:', {
-      data: response.data,
-      statusCd: response.status,
-      statusMsg: response.message,
-    });
+    // console.log('🤫 kyRequest Response:', {
+    //   data: response.data,
+    //   statusCd: response.status,
+    //   statusMsg: response.message,
+    // });
 
-    return response as Response<TypeResponse>;
+    return response as TypeResponse;
   } catch (error) {
     console.error('❌ Error:', {
       method,

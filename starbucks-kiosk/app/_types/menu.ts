@@ -1,8 +1,8 @@
 /** @desc 카테고리 타입 */
-type CategoryType = 'coffee' | 'etc' | 'frappuccino' | 'season' | 'tea';
+export type CategoryType = 'coffee' | 'etc' | 'frappuccino' | 'season' | 'tea';
 
 /** @desc 메뉴 아이템 데이터 타입 (공통) */
-export type MenuItemData = {
+export type MenuListResponse = {
   category: CategoryType;
   price: number;
   productName: string;
@@ -10,10 +10,7 @@ export type MenuItemData = {
 };
 
 /** @desc 메뉴 아이템 DTO (데이터베이스/목데이터용) */
-export type MenuItemDTO = {
+export type MenuItemMock = {
   id: string;
-  data: MenuItemData;
+  data: MenuListResponse;
 };
-
-/** @desc 메뉴 아이템 응답 타입 */
-export type MenuItemResponse = MenuItemData[];
