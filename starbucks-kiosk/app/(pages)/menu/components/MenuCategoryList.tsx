@@ -1,30 +1,26 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
-import { MENU_CATEGORY } from '@/_constants/MENU_CATEGORY';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { MENU_CATEGORY } from '@/_constants/MENU';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { MenuState } from './MenuContent';
 
 interface HoverMenuState {
   current: MenuState | null; // 현재 호버된 메뉴 상태
   previous: MenuState | null; // 이전에 호버된 메뉴 상태
 }
 
-export interface MenuState {
-  idx: number; // 메뉴 아이템의 인덱스
-  left: number; // MenuCategoryList - 메뉴 아이템의 왼쪽 위치 (offsetLeft)
-  width: number; // MenuCategoryList -
+interface MenuCategoryListPorps {
+  activeMenu: MenuState;
+  setActiveMenu: React.Dispatch<React.SetStateAction<MenuState>>;
 }
-
-const MenuCategoryList = () => {
-  const category = useSearchParams().get('category');
+const MenuCategoryList = ({ ...props }: MenuCategoryListPorps) => {
+  const { activeMenu, setActiveMenu } = props;
   const navRef = useRef<HTMLUListElement>(null); // 슬라이더 위치 계산을 위한 ref
+
   const sliderClass = 'absolute top-1/2 mt-0.5 h-[80%] origin-center -translate-y-1/2 rounded-3xl'; // slider common css
 
-  const [activeMenu, setActiveMenu] = useState<MenuState>({
-    idx: 0,
-    left: 0,
-    width: 0,
-  });
-
+  // 호버 상태 - current는 이전 상태, previous - 현재 호버
   const [hoverMenu, setHoverMenu] = useState<HoverMenuState>({
     current: null,
     previous: null,
@@ -32,22 +28,26 @@ const MenuCategoryList = () => {
 
   // 컴포넌트 마운트 시 초기 메뉴 위치 설정
   useEffect(() => {
-    const SearchParamCategory = MENU_CATEGORY.find((item) => item.name === category);
-
-    if (navRef.current && SearchParamCategory) {
-      const clickableItem = navRef.current.children[SearchParamCategory.idx] as HTMLLIElement;
+    if (navRef.current) {
+      const clickableItem = navRef.current.children[activeMenu.idx] as HTMLLIElement;
       if (clickableItem) {
-        setActiveMenu({
-          idx: SearchParamCategory.idx,
+        setActiveMenu((prev) => ({
+          ...prev,
           left: clickableItem.offsetLeft,
           width: clickableItem.offsetWidth,
-        });
+        }));
       }
     }
-  }, [category]);
+  }, []);
 
   // 클릭 시 메뉴 위치 계산
-  const onClickMenu = (idx: number) => {
+  const onClickMenu = (
+    item: {
+      idx: number;
+      name: string;
+    },
+    idx: number
+  ) => {
     if (navRef.current) {
       const clickableItem = navRef.current.children[idx] as HTMLLIElement;
       setActiveMenu({
@@ -90,20 +90,11 @@ const MenuCategoryList = () => {
         {MENU_CATEGORY.map((item, idx) => (
           <li
             key={item.idx}
-            onClick={() => onClickMenu(idx)}
+            onClick={() => onClickMenu(item, idx)}
             onMouseEnter={() => onMouseEnter(idx)}
             onMouseLeave={onMouseLeave}
-            className='z-10 h-full w-fit text-center text-[32px] leading-[80px]'>
-            <Link
-              className='inline-block w-full cursor-pointer px-8'
-              href={{
-                pathname: '',
-                query: {
-                  category: item.name,
-                },
-              }}>
-              {item.name}
-            </Link>
+            className='z-10 h-full w-fit cursor-pointer px-8 text-center text-[2rem] leading-[5rem]'>
+            {item.name}
           </li>
         ))}
 
