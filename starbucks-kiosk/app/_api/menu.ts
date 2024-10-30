@@ -1,6 +1,5 @@
 import { MenuListResponse } from '@/_types/menu';
 import { kyRequest } from '../_utils/fetcher';
-import Response from '@/_types/api/Response';
 
 const getMenuList = async (category: string) => {
   try {
@@ -11,7 +10,7 @@ const getMenuList = async (category: string) => {
     });
     return res;
   } catch (error) {
-    console.error('getMenuList error', error);
+    throw new Error('No data received');
   }
 };
 

@@ -10,6 +10,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        skeleton: {
+          base: '#1b3c35',
+          highlight: '#36544d',
+        },
+
         light: {
           white: {
             light: '#dbd6c1',
@@ -37,6 +42,15 @@ const config: Config = {
             deep: '#001e1e',
           },
         },
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+      },
+      animation: {
+        'skeleton-loading': 'shimmer 1.8s infinite',
       },
     },
   },

@@ -1,15 +1,16 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { queries } from '@/_queries/menu';
 import getMenuList from '@/_api/menu';
 import { MenuListResponse } from '@/_types/menu';
 import { MenuState } from './MenuContent';
 import { MENU_CATEGORY } from '@/_constants/MENU';
+import SkeletonMenuItem from './SkeletonMenuItem';
 
 interface MenuItemListProps {
   activeMenu: MenuState;
@@ -19,24 +20,13 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
   const ITEMS_PER_PAGE = 8;
   const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx);
 
-  const queryClient = useQueryClient();
-
   const { data: menuList, isLoading } = useQuery({
     queryKey: queries.list(activeCategory?.name ?? 'season'),
-    queryFn: () => getMenuList(activeCategory?.name ?? 'season'),
+    queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 800)); // 스켈레톤 보여주기 위한 딜레이
+      return getMenuList(activeCategory?.name ?? 'season');
+    },
   });
-
-  // 현재 모든 카테고리의 상태 확인
-  useEffect(() => {
-    const allQueries = queryClient.getQueryCache().findAll();
-    console.log(
-      'All queries:',
-      allQueries.map((query) => ({
-        queryKey: query.queryKey,
-        state: query.state,
-      }))
-    );
-  }, [activeMenu]); // 카테고리 변경될 때마다 로그
 
   const shouldShowNavigation = menuList ? menuList.length > ITEMS_PER_PAGE : false;
 
@@ -57,7 +47,7 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
   }, [menuList]);
 
   if (isLoading) {
-    return <div>...로딩중...</div>;
+    return <SkeletonMenuItem />;
   }
 
   return (
