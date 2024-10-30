@@ -13,7 +13,7 @@
 
 - Frontend
 
-  - Next.js 14
+  - Next.js 14 -> 15
   - TypeScript
   - TailwindCSS
   - Zustand
@@ -88,62 +88,60 @@ about-me
 ----------------------------------------------------------------------------------
 └─── 📂public/                              # 정적 파일 (이미지, 아이콘 등)
      ├─── 📂images/
-     └─── 📂fonts/ㄴ
+     └─── 📂fonts/
 ```
 
-### ⚙️ 개발 환경 설정
+### 앞으로의 과정
 
-```
-{
-  "printWidth": 100, // 한 줄 길이
-  "useTabs": false, // 탭 대신 스페이스
-  "tabWidth": 2, // 들여쓰기 2칸
-  "singleQuote": true, // 문자열에 작은 따옴표
-  "jsxSingleQuote": true, // jsx 속성에도 작은 따옴표
-  "singleAttributePerLine": true, // jsx 속성을 한 줄에 하나씩
-  "bracketSameLine": true, // 여는 괄호를 같은 줄 위치
-  "bracketSpacing": true, // 객체 리터럴 중괄호 주변에 공백 추가 {jiwon: true} => { jiwon: true }
-  "trailingComma": "es5", // 문장 끝에 쉼표 es5 규칙에 따름
-  "semi": true, // 문장 끝에 세미콜론 추가
-  "plugins": ["prettier-plugin-tailwindcss"], // tailwind 자동 정렬을 위한 플러그인
-  "tailwindConfig": "./tailwind.config.ts"
-}
-
-```
-
-### 👨‍💻 실행 방법
-
-```bash
-# Install dependencies
-yarn
-
-# Run development server
-yarn dev
-```
+-
 
 ### 📦 주요 기능
 
-[내용 추가 예정]
+이번 프로젝트는 매장/포장 선택부터 시작해서 메뉴 선택, 포인트 적립/사용, 최종 금액 계산까지(결제X) 가능한 키오스크를 만들 예정이다. 주문이 완료되면 주문서가 인쇄되는 기능까지 구현할 계획이다.
+특히 이전 프로젝트와 다르게 관리자 페이지를 추가하려 한다. 메뉴 관리부터 주문 내역 확인, 매출 통계까지 실제 매장에서 필요한 기능들을 담아볼 예정이다.
 
 ### 🔥 트러블 슈팅
 
-[진행하면서 발생하는 이슈들 추가 예정]
+1. 테마 작업 부분
+2. 메뉴 리스트 선택할 때 Link태그로 사용하여 SearchPram에 넣어서 이슈가 생겼었다.
 
 ### 📊 성능 최적화
-
-[추가 예정]
-최적화 전/후 비교
-Lighthouse 점수
-Core Web Vitals 지표
 
 ### 🎨 UI/UX 개선
 
 [추가 예정]
-개선 전/후 비교
 
 ### 📝 회고
 
-[추가 예정]
+- 프로젝트를 세팅하다 보니 모든 세팅에 이유가 있어야함을 깨닫게 됐다.
+  하여 적게 되었다.
+
+1. TanStack Query
+   처음엔 `SWR`이랑 `TanStack Query` 사이에서 고민했고, `Next.js 14` 버전부터 `fetch`에 대해 캐싱이 지원된다 하여 `fetch`만 사용하여 해볼까도 고민했다.
+   하지만 당연하게도. `fetch` 캐싱은 서버 컴포넌트에서만 작동하고, 클라이언트 상태 관리나 실시간 업데이트가 필요한 경우 한계가 있다.
+   `SWR`도 좋지만 복잡한 상태 관리나 데이터 동기화에서 `TanStack Query`가 더 강점이 더 많다고 하여 체감해보기 위해 선택했다.
+
+사용해보니 `queryKey` 기반의 전역 캐시 시스템으로 어느 컴포넌트에서든 쉽게 데이터에 접근할 수 있었다.
+전에 한 프로젝트는 `SWR`로 진행하여 `props drilling`이 굉장히 심했다. `mutate` 마저 `props`로 전달했어야만 했다.
+
+`Next.js` 프로젝트를 한 이유는 현재 프로젝트가 SEO 강화는 하지 않아도 괜찮지만,
+사용자 경험 차원(초기 진입 시 렌더링 된 페이지가 보이는 것을 원해서)에서 SSR를 지원하고 싶었다.
+그 점에선 TanSack Query가 굉장했다. `prefetchQuery`를 이용한 SSR 구현하는게 굉장히 쉬웠고,
+Hydration 과정에서도 캐시가 유지되는 장점이 있었다.
+(서버에서 미리 가져온 데이터를 QueryClient의 캐시에 저장해둔다 -> 클라이언트 사이드 렌더링으로 전환되어도 API 호출 없이 데이터 사용)
+
+2. zustand
+   토이 프로젝트라 새로운 기술을 시도해봤다. 회사에선 `Jotai`를 써봤었는데 이번엔 `Zustand`를 선택했다.
+   `Zustand`도 `Jotai`처럼 러닝커브가 낮아서 좋았다. 하지만 `Jotai`는 단순 `setState` 정도만 가능했지만
+   `Zustand`는 상태 변경에 대한 **로직을 직접 작성**할 수 있어서 더 유연했다.
+   경험하면서 좋은점들을 더 써보려고한다.
+
+3. Skeleton UI
+   로딩은.. Loading... 텍스트나 스피너보다 스켈레톤 UI가 더 나은 사용자 경험을 제공한다고 생각했다.
+   사용자가 로딩 중에도 UI 구조를 파악할 수 있다고 생각했고, **Layout Shift** 도 방지할 수 있기 때문이다.
+   -> 개인적으로 너무 맘에들어서 패치 딜레이도 넣었다..
+
+[더 추가 예정]
 프로젝트를 통해 배운 점
 아쉬운 점 & 개선하고 싶은 점
 향후 발전 방향

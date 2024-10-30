@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '@/_lib/firebase/config';
-import { MenuListResponse } from '@/_types/menu';
 
 /** @desc 메뉴 리스트 GET */
 export async function GET(req: NextRequest) {

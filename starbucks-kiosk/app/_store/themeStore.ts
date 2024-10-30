@@ -1,4 +1,4 @@
-import { ThemeType } from '@/_types/ThemeType';
+import { ThemeType } from '@/_types/themeType';
 import { create } from 'zustand';
 
 interface ThemeStore {

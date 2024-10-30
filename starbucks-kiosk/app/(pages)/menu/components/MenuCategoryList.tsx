@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { MENU_CATEGORY } from '@/_constants/MENU';
-import { useSearchParams, useRouter } from 'next/navigation';
 import { MenuState } from './MenuContent';
 
 interface HoverMenuState {

@@ -1,4 +1,3 @@
-import Response from '@/_types/api/Response';
 import ky from 'ky';
 import { HttpMethod, Input, Options } from 'node_modules/ky/distribution/types/options';
 
