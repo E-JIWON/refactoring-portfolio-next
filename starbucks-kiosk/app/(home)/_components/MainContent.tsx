@@ -16,23 +16,13 @@ const MainContent = () => {
 
       <div className='flex h-1/5'>
         <Link
-          href={{
-            pathname: '/menu',
-            query: {
-              category: 'season',
-            },
-          }}
+          href={{ pathname: '/menu' }}
           className={LinkClass}
           onClick={() => setOrderOption('dine-in')}>
           매장
         </Link>
         <Link
-          href={{
-            pathname: '/menu',
-            query: {
-              category: 'season',
-            },
-          }}
+          href={{ pathname: '/menu' }}
           className={LinkClass}
           onClick={() => setOrderOption('takeout')}>
           포장

@@ -1,42 +1,64 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { queries } from '@/_queries/menu';
-import { useSearchParams } from 'next/navigation';
 import getMenuList from '@/_api/menu';
 import { MenuListResponse } from '@/_types/menu';
+import { MenuState } from './MenuContent';
+import { MENU_CATEGORY } from '@/_constants/MENU';
 
-const MenuItemList = () => {
-  const category = useSearchParams().get('category');
+interface MenuItemListProps {
+  activeMenu: MenuState;
+}
+const MenuItemList = ({ ...props }: MenuItemListProps) => {
+  const { activeMenu } = props;
+  const ITEMS_PER_PAGE = 8;
+  const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx);
+
+  const queryClient = useQueryClient();
 
   const { data: menuList, isLoading } = useQuery({
-    queryKey: queries.list(category ?? 'season'),
-    queryFn: () => getMenuList(category ?? 'season'),
+    queryKey: queries.list(activeCategory?.name ?? 'season'),
+    queryFn: () => getMenuList(activeCategory?.name ?? 'season'),
   });
+
+  // 현재 모든 카테고리의 상태 확인
+  useEffect(() => {
+    const allQueries = queryClient.getQueryCache().findAll();
+    console.log(
+      'All queries:',
+      allQueries.map((query) => ({
+        queryKey: query.queryKey,
+        state: query.state,
+      }))
+    );
+  }, [activeMenu]); // 카테고리 변경될 때마다 로그
+
+  const shouldShowNavigation = menuList ? menuList.length > ITEMS_PER_PAGE : false;
 
   /** 카테고리 별로 8개씩 잘라서 2차원 배열로 만들어주는 작업 */
   const getCategoryGroupItems = (items?: MenuListResponse[]): MenuListResponse[][] | [] => {
     if (items) {
       const result: MenuListResponse[][] = [];
-      for (let i = 0; i < items.length; i += 8) {
-        result.push(items.slice(i, i + 8));
+      for (let i = 0; i < items.length; i += ITEMS_PER_PAGE) {
+        result.push(items.slice(i, i + ITEMS_PER_PAGE));
       }
       return result;
     }
     return [];
   };
 
-  const categoryMenuList = getCategoryGroupItems(menuList);
+  const categoryMenuList = useMemo(() => {
+    return getCategoryGroupItems(menuList);
+  }, [menuList]);
 
   if (isLoading) {
     return <div>...로딩중...</div>;
   }
-
-  const shouldShowNavigation = menuList ? menuList.length > 8 : false;
 
   return (
     <section className='mt-5 max-w-[900px] px-5'>
