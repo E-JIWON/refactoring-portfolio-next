@@ -1,6 +1,5 @@
 'use client';
 
-import { MenuListResponse } from '@/_types/menu';
 import React, { useState } from 'react';
 import MenuCategoryList from './MenuCategoryList';
 import MenuItemList from './MenuItemList';
