@@ -1,5 +1,7 @@
 import { MenuItemMock } from '@/_types/menu';
 
+// test code 수정
+
 export const menuItems: MenuItemMock[] = [
   // season
   {
