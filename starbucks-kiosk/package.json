@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "npx husky install"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.16",
