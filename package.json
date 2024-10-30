@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "prepare": "npx husky install"
-  },
-  "devDependencies": {
-    "husky": "^9.1.6"
-  }
-}
