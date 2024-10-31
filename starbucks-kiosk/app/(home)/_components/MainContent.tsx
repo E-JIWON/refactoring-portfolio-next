@@ -3,6 +3,7 @@
 import useOrder from '@/_hooks/useOrder';
 import Link from 'next/link';
 import React from 'react';
+import MainSlide from './MainSlide';
 
 const MainContent = () => {
   const { setOrderOption } = useOrder();
@@ -12,7 +13,9 @@ const MainContent = () => {
 
   return (
     <div className='h-full w-full'>
-      <div className='h-4/5 w-full'>이벤트 배너 영역</div>
+      <div className='h-4/5 w-full'>
+        <MainSlide />
+      </div>
 
       <div className='flex h-1/5'>
         <Link
