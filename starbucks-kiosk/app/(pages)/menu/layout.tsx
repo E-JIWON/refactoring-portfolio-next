@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,10 +9,17 @@ export default function RootLayout({
     <>
       <header className='h-8'>
         {/* 스타벅스 아이콘 */}
-        <div>스타벅스 아이콘</div>
+        <div>
+          <Image
+            src={'/images/icon/home.svg'}
+            alt='홈으로 돌아가는 홈모양 버튼'
+            width={24}
+            height={24}
+          />
+        </div>
         <div></div>
       </header>
-      {children}
+      <div>{children}</div>
     </>
   );
 }

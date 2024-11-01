@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import MenuCategoryList from './MenuCategoryList';
 import MenuItemList from './MenuItemList';
+import ResultButton from './ResultButton';
 
 export interface MenuState {
   idx: number; // 메뉴 아이템의 인덱스
@@ -28,7 +29,20 @@ const MenuContent = () => {
       {/* 메뉴 리스트  */}
       <MenuItemList activeMenu={activeMenu} />
 
-      <div>결과 나오는 곳</div>
+      {/* 결과 영역 */}
+      <div className='brder mt-10 w-full border-spacing-14 border-t-2 border-dashed border-light-green-bright px-10'>
+        <div className='flex h-full justify-between py-4'>
+          {/* 장바구니 */}
+          <div>장바구니</div>
+          {/* 버튼 */}
+          <div>
+            <div className='flex h-full flex-col gap-4'>
+              <ResultButton ariaLabel='장바구니에 담긴 메뉴 초기화 버튼'>초기화</ResultButton>
+              <ResultButton ariaLabel='장바구니에 담긴 메뉴 결제 버튼'>결제</ResultButton>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

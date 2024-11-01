@@ -62,10 +62,6 @@ const MainSlide = () => {
             className={`relative w-full overflow-hidden transition-[height] duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${index === nextSlide ? 'z-20 h-full' : index === currentSlide ? 'z-10 h-full' : 'z-0 h-0'}`}>
             {/* 이미지 컨테이너 */}
             <div className='relative h-full w-full'>
-              {/* <div
-                className='h-full w-full bg-cover bg-top bg-no-repeat'
-                style={{ backgroundImage: `url(${slide.image})` }}
-              /> */}
               <Image
                 src={slide.image}
                 alt={slide.desc}

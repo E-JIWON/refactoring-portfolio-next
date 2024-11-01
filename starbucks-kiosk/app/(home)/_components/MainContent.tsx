@@ -9,7 +9,7 @@ const MainContent = () => {
   const { setOrderOption } = useOrder();
 
   const LinkClass =
-    'flex h-full w-1/2 items-center justify-center bg-light-green-deep text-[45px] font-black text-light-orange-light';
+    'flex h-full w-1/2 items-center justify-center bg-light-green-deep text-[45px] font-black text-light-orange-light transition-all duration-150 ease-linear hover:bg-light-green-bright';
 
   return (
     <div className='h-full w-full'>

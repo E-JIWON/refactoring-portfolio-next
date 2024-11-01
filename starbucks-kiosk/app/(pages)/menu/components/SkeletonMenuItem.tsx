@@ -8,20 +8,20 @@ const SkeletonMenuItem = () => {
         {Array.from({ length: skeletonLength }).map((_, i) => (
           <li
             key={i}
-            className='bg-skeleton-base/30 relative h-72 overflow-hidden rounded-3xl p-4'>
+            className='relative h-72 overflow-hidden rounded-3xl bg-skeleton-base/30 p-4'>
             {/* 이미지 스켈레톤 */}
-            <div className='bg-skeleton-base/40 relative mb-2 h-48 w-full overflow-hidden rounded-2xl'>
-              <div className='from-skeleton-base/40 via-skeleton-highlight/30 to-skeleton-base/40 animate-skeleton-loading absolute inset-0 -translate-x-full bg-gradient-to-r' />
+            <div className='relative mb-2 h-48 w-full overflow-hidden rounded-2xl bg-skeleton-base/40'>
+              <div className='absolute inset-0 -translate-x-full animate-skeleton-loading bg-gradient-to-r from-skeleton-base/40 via-skeleton-highlight/30 to-skeleton-base/40' />
             </div>
 
             {/* 상품명 스켈레톤 */}
-            <div className='bg-skeleton-base/40 relative mx-auto mb-2 h-6 w-2/3 overflow-hidden rounded'>
-              <div className='from-skeleton-base/40 via-skeleton-highlight/30 to-skeleton-base/40 animate-skeleton-loading absolute inset-0 -translate-x-full bg-gradient-to-r' />
+            <div className='relative mx-auto mb-2 h-6 w-2/3 overflow-hidden rounded bg-skeleton-base/40'>
+              <div className='absolute inset-0 -translate-x-full animate-skeleton-loading bg-gradient-to-r from-skeleton-base/40 via-skeleton-highlight/30 to-skeleton-base/40' />
             </div>
 
             {/* 가격 스켈레톤 */}
-            <div className='bg-skeleton-base/40 relative mx-auto h-7 w-1/2 overflow-hidden rounded'>
-              <div className='from-skeleton-base/40 via-skeleton-highlight/30 to-skeleton-base/40 animate-skeleton-loading absolute inset-0 -translate-x-full bg-gradient-to-r' />
+            <div className='relative mx-auto h-7 w-1/2 overflow-hidden rounded bg-skeleton-base/40'>
+              <div className='absolute inset-0 -translate-x-full animate-skeleton-loading bg-gradient-to-r from-skeleton-base/40 via-skeleton-highlight/30 to-skeleton-base/40' />
             </div>
           </li>
         ))}

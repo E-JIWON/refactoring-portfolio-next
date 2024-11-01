@@ -18,7 +18,7 @@ interface MenuItemListProps {
 const MenuItemList = ({ ...props }: MenuItemListProps) => {
   const { activeMenu } = props;
   const ITEMS_PER_PAGE = 8;
-  const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx);
+  const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx); // 현재 카테고리
 
   const { data: menuList, isLoading } = useQuery({
     queryKey: queries.list(activeCategory?.name ?? 'season'),
@@ -28,6 +28,7 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
     },
   });
 
+  // 네비게이션 노출 여부
   const shouldShowNavigation = menuList ? menuList.length > ITEMS_PER_PAGE : false;
 
   /** 카테고리 별로 8개씩 잘라서 2차원 배열로 만들어주는 작업 */
@@ -46,6 +47,7 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
     return getCategoryGroupItems(menuList);
   }, [menuList]);
 
+  // 로딩 중일 때 스켈레톤
   if (isLoading) {
     return <SkeletonMenuItem />;
   }
