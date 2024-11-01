@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description: 'hi jiwon starbucks app',
 };
 
+// 깃 허브 권한 오류 테스트
 export default function RootLayout({
   children,
 }: Readonly<{
