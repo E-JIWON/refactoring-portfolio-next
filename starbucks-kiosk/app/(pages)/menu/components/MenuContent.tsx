@@ -19,7 +19,7 @@ const MenuContent = () => {
   });
 
   return (
-    <section className='grid h-full w-full grid-rows-[80px_2fr_1fr]'>
+    <section className='grid h-full w-full grid-rows-[5vh_2fr_1fr]'>
       {/* 카테고리 네비게이션 */}
       <MenuCategoryList
         activeMenu={activeMenu}
@@ -30,7 +30,7 @@ const MenuContent = () => {
       <MenuItemList activeMenu={activeMenu} />
 
       {/* 결과 영역 */}
-      <div className='brder mt-10 w-full border-spacing-14 border-t-2 border-dashed border-light-green-bright px-10'>
+      <div className='brder mt-4 w-full border-spacing-14 border-t-2 border-dashed border-light-green-bright px-10'>
         <div className='flex h-full justify-between py-4'>
           {/* 장바구니 */}
           <div>장바구니</div>

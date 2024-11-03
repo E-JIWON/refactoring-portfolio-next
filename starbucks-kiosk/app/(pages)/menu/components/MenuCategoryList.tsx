@@ -81,7 +81,7 @@ const MenuCategoryList = ({ ...props }: MenuCategoryListPorps) => {
   };
 
   return (
-    <nav className='h-20 w-full border-y border-y-light-green-light px-14'>
+    <nav className='h-[5vh] w-full border-y border-y-light-green-light px-14'>
       <ul
         ref={navRef}
         className='relative flex h-full items-center justify-center'>
@@ -92,7 +92,7 @@ const MenuCategoryList = ({ ...props }: MenuCategoryListPorps) => {
             onClick={() => onClickMenu(item, idx)}
             onMouseEnter={() => onMouseEnter(idx)}
             onMouseLeave={onMouseLeave}
-            className='z-10 h-full w-fit cursor-pointer px-8 text-center text-[2rem] leading-[5rem]'>
+            className='z-10 h-full w-fit cursor-pointer px-8 text-center text-[3vh] leading-[5vh]'>
             {item.name}
           </li>
         ))}

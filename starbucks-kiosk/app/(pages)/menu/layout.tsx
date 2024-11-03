@@ -19,7 +19,7 @@ export default function RootLayout({
         </div>
         <div></div>
       </header>
-      <div>{children}</div>
+      <div className='flex-1'>{children}</div>
     </>
   );
 }

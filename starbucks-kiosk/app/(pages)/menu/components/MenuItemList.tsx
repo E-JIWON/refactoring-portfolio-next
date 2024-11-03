@@ -72,7 +72,7 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
                 {group.map((item, idx) => (
                   <li
                     key={idx}
-                    className='h-72 rounded-3xl bg-light-white-light p-4'>
+                    className='h-auto rounded-3xl bg-light-white-light p-4'>
                     <button className='w-full'>
                       <figure>
                         <div className='relative mb-2 h-48 w-full overflow-hidden rounded-2xl'>

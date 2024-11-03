@@ -37,7 +37,7 @@ export default function RootLayout({
                 <div className='mx-auto flex max-w-[900px] pt-2'>
                   <div className='grid h-full w-full grid-rows-[auto_1fr]'>
                     <ManagerComponent />
-                    <main className='mx-auto w-full bg-light-green-deep text-light-white-light'>
+                    <main className='mx-auto flex h-[90vh] w-full flex-col bg-light-green-deep text-light-white-light'>
                       {children}
                     </main>
                   </div>
