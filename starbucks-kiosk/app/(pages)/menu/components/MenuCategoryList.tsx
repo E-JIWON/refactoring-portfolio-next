@@ -84,7 +84,7 @@ const MenuCategoryList = ({ ...props }: MenuCategoryListPorps) => {
     <nav className='h-20 w-full border-y border-y-light-green-light px-14'>
       <ul
         ref={navRef}
-        className='relative flex h-full items-center'>
+        className='relative flex h-full items-center justify-center'>
         {/* 메뉴 아이템 리스트 */}
         {MENU_CATEGORY.map((item, idx) => (
           <li
