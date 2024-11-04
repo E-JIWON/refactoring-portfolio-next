@@ -33,11 +33,13 @@ export default function RootLayout({
         <ThemeProvider>
           <OrderProvider>
             <ReactQueryProvider>
-              <div className='h-screen w-screen bg-[#b5d9d9]'>
-                <div className='mx-auto flex h-[700px] w-[900px] py-10'>
+              <div className='h-screen w-screen overflow-hidden bg-[#b5d9d9]'>
+                <div className='mx-auto flex max-w-[900px] pt-2'>
                   <div className='grid h-full w-full grid-rows-[auto_1fr]'>
                     <ManagerComponent />
-                    <main className='bg-light-green-deep text-light-white-light'>{children}</main>
+                    <main className='mx-auto flex h-[90vh] w-full flex-col bg-light-green-deep text-light-white-light'>
+                      {children}
+                    </main>
                   </div>
                 </div>
               </div>
