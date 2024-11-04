@@ -4,14 +4,13 @@ import React, { useEffect, useState } from 'react';
 import useThemeStore from '@/_store/themeStore';
 import { ThemeType } from '@/_types/themeType';
 
-/** @desc 테마 감시 함수 - 초기상태를 받아오고, 전역 상태 변경 감시*/
-export default function ThemeDetector({
-  defaultTheme,
-  children,
-}: {
+interface ThemeDetectorPorps {
   defaultTheme?: ThemeType;
   children: React.ReactNode;
-}) {
+}
+
+/** @desc 테마 감시 함수 - 초기상태를 받아오고, 전역 상태 변경 감시 */
+const ThemeDetector = ({ defaultTheme, children }: ThemeDetectorPorps) => {
   const { theme, setTheme } = useThemeStore();
   const [themeStatus, setThemeStatus] = useState(defaultTheme ?? '');
 
@@ -31,4 +30,6 @@ export default function ThemeDetector({
   }, [theme]);
 
   return <div className={themeStatus}>{children}</div>;
-}
+};
+
+export default ThemeDetector;

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,14 +11,19 @@ import { MenuListResponse } from '@/_types/menu';
 import { MenuState } from './MenuContent';
 import { MENU_CATEGORY } from '@/_constants/MENU';
 import SkeletonMenuItem from './SkeletonMenuItem';
+import { useModal } from '@/_hooks/useModal';
+import Modal from '@/_ui/components/modal/Modal';
+import MenuOption from '@/_ui/components/modal/MenuOption';
 
 interface MenuItemListProps {
   activeMenu: MenuState;
 }
 const MenuItemList = ({ ...props }: MenuItemListProps) => {
   const { activeMenu } = props;
-  const ITEMS_PER_PAGE = 8;
+  const ITEMS_PER_PAGE = 8; // 한 페이지당 최대 개수
   const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx); // 현재 카테고리
+
+  const { openModal } = useModal();
 
   const { data: menuList, isLoading } = useQuery({
     queryKey: queries.list(activeCategory?.name ?? 'season'),
@@ -72,10 +77,12 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
                 {group.map((item, idx) => (
                   <li
                     key={idx}
-                    className='h-72 rounded-3xl bg-light-white-light p-4'>
-                    <button className='w-full'>
+                    className='h-64 rounded-3xl bg-light-white-light p-4'>
+                    <button
+                      className='w-full'
+                      onClick={() => openModal()}>
                       <figure>
-                        <div className='relative mb-2 h-48 w-full overflow-hidden rounded-2xl'>
+                        <div className='relative mb-2 h-40 w-full overflow-hidden rounded-2xl'>
                           <Image
                             src={`/images/menu/${item.category}/${item.imgSrc}`}
                             alt={item.productName}
@@ -105,6 +112,11 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
           </>
         )}
       </Swiper>
+
+      {/* 모달 - modal-root 에 렌더링됨*/}
+      <Modal>
+        <MenuOption />
+      </Modal>
     </section>
   );
 };

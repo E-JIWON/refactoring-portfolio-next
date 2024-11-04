@@ -8,9 +8,9 @@ const SkeletonMenuItem = () => {
         {Array.from({ length: skeletonLength }).map((_, i) => (
           <li
             key={i}
-            className='relative h-72 overflow-hidden rounded-3xl bg-skeleton-base/30 p-4'>
+            className='relative h-64 overflow-hidden rounded-3xl bg-skeleton-base/30 p-4'>
             {/* 이미지 스켈레톤 */}
-            <div className='relative mb-2 h-48 w-full overflow-hidden rounded-2xl bg-skeleton-base/40'>
+            <div className='relative mb-2 h-40 w-full overflow-hidden rounded-2xl bg-skeleton-base/40'>
               <div className='absolute inset-0 -translate-x-full animate-skeleton-loading bg-gradient-to-r from-skeleton-base/40 via-skeleton-highlight/30 to-skeleton-base/40' />
             </div>
 
