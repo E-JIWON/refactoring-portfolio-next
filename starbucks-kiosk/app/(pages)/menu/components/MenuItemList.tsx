@@ -9,21 +9,18 @@ import { queries } from '@/_queries/menu';
 import getMenuList from '@/_api/menu';
 import { MenuListResponse } from '@/_types/menu';
 import { MenuState } from './MenuContent';
-import { MENU_CATEGORY } from '@/_constants/MENU';
+import { ITEMS_PER_PAGE, MENU_CATEGORY } from '@/_constants/MENU';
 import SkeletonMenuItem from './SkeletonMenuItem';
 import { useModal } from '@/_hooks/useModal';
-import Modal from '@/_ui/components/modal/Modal';
-import MenuOption from '@/_ui/components/modal/MenuOption';
 
 interface MenuItemListProps {
   activeMenu: MenuState;
 }
 const MenuItemList = ({ ...props }: MenuItemListProps) => {
   const { activeMenu } = props;
-  const ITEMS_PER_PAGE = 8; // 한 페이지당 최대 개수
-  const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx); // 현재 카테고리
 
   const { openModal } = useModal();
+  const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx); // 현재 카테고리
 
   const { data: menuList, isLoading } = useQuery({
     queryKey: queries.list(activeCategory?.name ?? 'season'),
@@ -112,11 +109,6 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
           </>
         )}
       </Swiper>
-
-      {/* 모달 - modal-root 에 렌더링됨*/}
-      <Modal>
-        <MenuOption />
-      </Modal>
     </section>
   );
 };
