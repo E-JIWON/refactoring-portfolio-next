@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import MenuCategoryList from './MenuCategoryList';
 import MenuItemList from './MenuItemList';
 import ResultButton from './ResultButton';
-import Modal from '@/_ui/components/modal/modal';
 import MenuOption from '@/_ui/components/modal/MenuOption';
+import Modal from '@/_ui/components/modal/Modal';
 
 export interface MenuState {
   idx: number; // 메뉴 아이템의 인덱스

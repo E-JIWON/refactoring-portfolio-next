@@ -3,10 +3,6 @@ import '@/_ui/styles/globals.css';
 import { Gowun_Batang } from 'next/font/google';
 import ManagerComponent from './_ui/components/layout/ManagerComponent';
 
-import { OrderProvider } from './_context/OrderContext';
-import ThemeProvider from './_provider/ThemeProvider';
-import ReactQueryProvider from './_provider/ReactQueryProvider';
-import { ModalProvider } from './_provider/ModalContext';
 import CombinedProvider from './_provider/CombinedProvider';
 
 const gowunBatangFont = Gowun_Batang({
