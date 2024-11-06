@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -9,15 +9,17 @@ import { queries } from '@/_queries/menu';
 import getMenuList from '@/_api/menu';
 import { MenuListResponse } from '@/_types/menu';
 import { MenuState } from './MenuContent';
-import { MENU_CATEGORY } from '@/_constants/MENU';
+import { ITEMS_PER_PAGE, MENU_CATEGORY } from '@/_constants/MENU';
 import SkeletonMenuItem from './SkeletonMenuItem';
+import { useModal } from '@/_hooks/useModal';
 
 interface MenuItemListProps {
   activeMenu: MenuState;
 }
 const MenuItemList = ({ ...props }: MenuItemListProps) => {
   const { activeMenu } = props;
-  const ITEMS_PER_PAGE = 8;
+
+  const { openModal } = useModal();
   const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx); // 현재 카테고리
 
   const { data: menuList, isLoading } = useQuery({
@@ -72,10 +74,12 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
                 {group.map((item, idx) => (
                   <li
                     key={idx}
-                    className='h-auto rounded-3xl bg-light-white-light p-4'>
-                    <button className='w-full'>
+                    className='h-64 rounded-3xl bg-light-white-light p-4'>
+                    <button
+                      className='w-full'
+                      onClick={() => openModal()}>
                       <figure>
-                        <div className='relative mb-2 h-48 w-full overflow-hidden rounded-2xl'>
+                        <div className='relative mb-2 h-40 w-full overflow-hidden rounded-2xl'>
                           <Image
                             src={`/images/menu/${item.category}/${item.imgSrc}`}
                             alt={item.productName}

@@ -6,6 +6,8 @@ import ManagerComponent from './_ui/components/layout/ManagerComponent';
 import { OrderProvider } from './_context/OrderContext';
 import ThemeProvider from './_provider/ThemeProvider';
 import ReactQueryProvider from './_provider/ReactQueryProvider';
+import { ModalProvider } from './_provider/ModalContext';
+import CombinedProvider from './_provider/CombinedProvider';
 
 const gowunBatangFont = Gowun_Batang({
   subsets: ['latin'],
@@ -30,22 +32,22 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body className={`${gowunBatangFont.className} antialiased`}>
-        <ThemeProvider>
-          <OrderProvider>
-            <ReactQueryProvider>
-              <div className='h-screen w-screen overflow-hidden bg-[#b5d9d9]'>
-                <div className='mx-auto flex max-w-[900px] pt-2'>
-                  <div className='grid h-full w-full grid-rows-[auto_1fr]'>
-                    <ManagerComponent />
-                    <main className='mx-auto flex h-[90vh] w-full flex-col bg-light-green-deep text-light-white-light'>
-                      {children}
-                    </main>
-                  </div>
-                </div>
+        <CombinedProvider>
+          {/* 모달 */}
+          <div id='modal-root' />
+
+          <div className='h-screen w-screen overflow-y-scroll bg-[#b5d9d9]'>
+            <div className='mx-auto flex max-w-[900px] pt-2'>
+              {/* 매니저, page main */}
+              <div className='grid h-[1100px] w-full grid-rows-[auto_1fr]'>
+                <ManagerComponent />
+                <main className='mx-auto h-auto w-full bg-light-green-deep text-light-white-light'>
+                  {children}
+                </main>
               </div>
-            </ReactQueryProvider>
-          </OrderProvider>
-        </ThemeProvider>
+            </div>
+          </div>
+        </CombinedProvider>
       </body>
     </html>
   );

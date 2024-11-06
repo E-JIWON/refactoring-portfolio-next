@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import MenuCategoryList from './MenuCategoryList';
 import MenuItemList from './MenuItemList';
 import ResultButton from './ResultButton';
+import Modal from '@/_ui/components/modal/modal';
+import MenuOption from '@/_ui/components/modal/MenuOption';
 
 export interface MenuState {
   idx: number; // 메뉴 아이템의 인덱스
@@ -19,7 +21,12 @@ const MenuContent = () => {
   });
 
   return (
-    <section className='grid h-full w-full grid-rows-[5vh_2fr_1fr]'>
+    <section className='grid h-full w-full grid-rows-[80px_2fr_1fr]'>
+      {/* 모달 - modal-root 에 렌더링됨*/}
+      <Modal>
+        <MenuOption />
+      </Modal>
+
       {/* 카테고리 네비게이션 */}
       <MenuCategoryList
         activeMenu={activeMenu}
