@@ -4,8 +4,9 @@ import React, { useState } from 'react';
 import MenuCategoryList from './MenuCategoryList';
 import MenuItemList from './MenuItemList';
 import ResultButton from './ResultButton';
-import MenuOption from '@/_ui/components/modal/MenuOption';
+import MenuOption from '@/_ui/components/modal/MenuOptionContent';
 import Modal from '@/_ui/components/modal/Modal';
+import { CartItem } from '@/_types/cart';
 
 export interface MenuState {
   idx: number; // 메뉴 아이템의 인덱스
@@ -19,12 +20,13 @@ const MenuContent = () => {
     left: 0,
     width: 0,
   });
+  const [selectMenuOption, SetSelectMenuOption] = useState<CartItem>();
 
   return (
     <section className='grid h-full w-full grid-rows-[80px_2fr_1fr]'>
       {/* 모달 - modal-root 에 렌더링됨*/}
       <Modal>
-        <MenuOption />
+        <MenuOption selectMenuOption={selectMenuOption} />
       </Modal>
 
       {/* 카테고리 네비게이션 */}
@@ -34,7 +36,10 @@ const MenuContent = () => {
       />
 
       {/* 메뉴 리스트  */}
-      <MenuItemList activeMenu={activeMenu} />
+      <MenuItemList
+        activeMenu={activeMenu}
+        SetSelectMenuOption={SetSelectMenuOption}
+      />
 
       {/* 결과 영역 */}
       <div className='brder mt-4 w-full border-spacing-14 border-t-2 border-dashed border-light-green-bright px-10'>
