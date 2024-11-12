@@ -45,10 +45,11 @@ export const kyRequest = async <TypeResponse, TypeRequest = unknown>(
 
     return response as TypeResponse;
   } catch (error) {
-    console.error('❌ Error:', {
+    console.log('❌ Error:', {
       method,
       url,
       message: error instanceof Error ? error.message : 'Unknown error',
     });
+    throw error;
   }
 };

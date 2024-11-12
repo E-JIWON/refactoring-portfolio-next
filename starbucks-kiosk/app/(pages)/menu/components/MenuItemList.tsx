@@ -55,7 +55,7 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
   }
 
   return (
-    <section className='mt-5 max-w-[900px] px-5'>
+    <section className='mt-5 max-w-[900px] min-h-[544px] px-5'>
       <Swiper
         navigation={
           shouldShowNavigation

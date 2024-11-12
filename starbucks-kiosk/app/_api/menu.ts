@@ -8,9 +8,12 @@ const getMenuList = async (category: string) => {
         category,
       },
     });
+    console.log("jiwon res ", res);
     return res;
   } catch (error) {
-    throw new Error('No data received');
+    console.log("jiwon error" , error);
+    
+    throw error;
   }
 };
 
