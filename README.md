@@ -8,4 +8,4 @@
 ### 버셀 배포 링크
 - https://starbucks-kiosk-umber.vercel.app/
 
-# tgests etseest asdf
+##### mac 구ㅓㄴ한 오류 테스트 진행 중
