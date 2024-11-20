@@ -92,7 +92,7 @@ const MenuCategoryList = ({ ...props }: MenuCategoryListPorps) => {
             onClick={() => onClickMenu(item, idx)}
             onMouseEnter={() => onMouseEnter(idx)}
             onMouseLeave={onMouseLeave}
-            className='z-10 h-full w-fit cursor-pointer px-8 text-center text-[3vh] leading-[5vh]'>
+            className='z-10 h-full w-fit cursor-pointer px-8 text-center text-2xl leading-[5vh]'>
             {item.name}
           </li>
         ))}

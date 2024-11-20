@@ -2,21 +2,27 @@ import React from 'react';
 import CustomScrollContainer from '../layout/CustomScrollContainer';
 import { OPTION_LIST } from '@/_constants/OPTION_LIST';
 import Image from 'next/image';
+import { CartItem } from '@/_types/cart';
 
-const MenuOption = () => {
+interface MenuOptionContentProps {
+  selectMenuOption: CartItem | undefined;
+}
+const MenuOptionContent = ({ ...props }: MenuOptionContentProps) => {
+  const { selectMenuOption } = props;
   return (
     <div className='flex h-[calc(100%-80px)] flex-col px-10'>
       {/* 상품 명, 가격 */}
-      <div className='mb-5 flex shrink-0 border-b border-solid border-light-green-bright py-8 text-center text-3xl font-semibold'>
-        <div className='flex w-2/3 items-center justify-center'>상품 명</div>
-        <div className='flex w-1/3 items-center justify-center'>+추가금</div>
+      <div className='mb-5 flex shrink-0 border-b border-solid border-light-green-bright py-8 text-center text-3xl font-semibold text-light-orange-light'>
+        <div className='flex w-2/3 items-center justify-center'>
+          {selectMenuOption?.productName}
+        </div>
+        <div className='flex w-1/3 items-center justify-center'>+{selectMenuOption?.price}</div>
       </div>
 
       {/* 추가 메뉴 리스트 */}
       <CustomScrollContainer className='flex-1'>
         <div>
           {OPTION_LIST.map((item, idx) => {
-            console.log('jiwon idx', idx);
             return (
               <div
                 key={idx}
@@ -56,4 +62,4 @@ const MenuOption = () => {
   );
 };
 
-export default MenuOption;
+export default MenuOptionContent;

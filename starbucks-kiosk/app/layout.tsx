@@ -32,7 +32,7 @@ export default function RootLayout({
           {/* 모달 */}
           <div id='modal-root' />
 
-          <div className='h-screen w-screen overflow-y-scroll bg-[#b5d9d9]'>
+          <div className='h-screen w-screen bg-[#b5d9d9]'>
             <div className='mx-auto flex max-w-[900px] pt-2'>
               {/* 매니저, page main */}
               <div className='grid h-[1100px] w-full grid-rows-[auto_1fr]'>
