@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useModal } from '@/_hooks/useModal';
 import { createPortal } from 'react-dom';
 
@@ -16,12 +16,14 @@ interface ModalProps {
 
 const Modal = ({ children, additionalButton }: ModalProps) => {
   const { isOpen, closeModal } = useModal(); //  모달 컨텍스트에서 상태와 함수를 가져옴
+  const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
-  // modal-root 엘리먼트를 찾음
-  const modalRoot = document.getElementById('modal-root');
+  useEffect(() => {
+    setModalRoot(document.getElementById('modal-root'));
+  }, []);
 
   // 마운트되지 않았거나, modal-root가 없거나, 모달이 닫혀있으면 아무것도 렌더링하지 않음
-  if (!modalRoot) return <></>;
+  if (!modalRoot) return null;
 
   return createPortal(
     <div
