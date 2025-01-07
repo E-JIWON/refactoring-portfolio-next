@@ -12,12 +12,14 @@ import { MenuState } from './MenuContent';
 import { ITEMS_PER_PAGE, MENU_CATEGORY } from '@/_constants/MENU';
 import SkeletonMenuItem from './SkeletonMenuItem';
 import { useModal } from '@/_hooks/useModal';
+import { CartItem } from '@/_types/cart';
 
 interface MenuItemListProps {
   activeMenu: MenuState;
+  SetSelectMenuOption: React.Dispatch<React.SetStateAction<CartItem | undefined>>;
 }
 const MenuItemList = ({ ...props }: MenuItemListProps) => {
-  const { activeMenu } = props;
+  const { activeMenu, SetSelectMenuOption } = props;
 
   const { openModal } = useModal();
   const activeCategory = MENU_CATEGORY.find((item) => item.idx === activeMenu.idx); // 현재 카테고리
@@ -49,6 +51,15 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
     return getCategoryGroupItems(menuList);
   }, [menuList]);
 
+  const onClickMenu = (item: MenuListResponse) => {
+    openModal(); // 모달 열기
+
+    SetSelectMenuOption({
+      price: item.price,
+      productName: item.productName,
+    });
+  };
+
   // 로딩 중일 때 스켈레톤
   if (isLoading) {
     return <SkeletonMenuItem />;
@@ -77,7 +88,7 @@ const MenuItemList = ({ ...props }: MenuItemListProps) => {
                     className='h-64 rounded-3xl bg-light-white-light p-4'>
                     <button
                       className='w-full'
-                      onClick={() => openModal()}>
+                      onClick={() => onClickMenu(item)}>
                       <figure>
                         <div className='relative mb-2 h-40 w-full overflow-hidden rounded-2xl'>
                           <Image

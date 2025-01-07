@@ -31,7 +31,7 @@ const Modal = ({ children, additionalButton }: ModalProps) => {
       onClick={closeModal}>
       {/* e.stopPropagation()으로 오버레이 클릭 이벤트가 컨텐츠 영역까지 전파되는 것을 방지 */}
       <div
-        className='absolute left-1/2 top-1/2 mx-auto h-4/5 w-7/12 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl bg-light-green-dark'
+        className='scrollbar-track-gray-200 absolute left-1/2 top-20 mx-auto h-[65vh] w-[800px] -translate-x-1/2 overflow-hidden rounded-2xl bg-light-green-dark'
         onClick={(e) => e.stopPropagation()}>
         {children}
         <div className='h-20'>
